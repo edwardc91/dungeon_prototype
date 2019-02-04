@@ -6,6 +6,11 @@ var current_dash_lenght : float = 0.0
 
 var dash_speed : float = 200
 
+func _ready()->void:
+	var weapon = get_node("../../WeaponPivot/WeaponOffset").get_child(0)
+	weapon.connect("combo_finished", self, "_on_Sword_combo_finished")
+	weapon.connect("single_attack_started", self, "_on_single_attack_started")
+
 func enter() ->void:
 	player_animation_node.play("attack_" + owner.spritedir)
 	owner.weapon.attack()

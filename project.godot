@@ -12,73 +12,112 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "Attack",
 "language": "GDScript",
-"path": "res://actors/characters/player/states/combat/Attack.gd"
+"path": "res://actors/player/states/combat/Attack.gd"
 }, {
 "base": "Position2D",
 "class": "CamaraPivot",
 "language": "GDScript",
-"path": "res://actors/characters/player/camara/CamaraPivot.gd"
+"path": "res://actors/player/camara/CamaraPivot.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Character",
 "language": "GDScript",
-"path": "res://actors/characters/Character.gd"
+"path": "res://actors/Character.gd"
 }, {
-"base": "Node",
+"base": "Area2D",
+"class": "DamageSource",
+"language": "GDScript",
+"path": "res://actors/DamageSource.gd"
+}, {
+"base": "Area2D",
+"class": "HitBox",
+"language": "GDScript",
+"path": "res://actors/hit_box/HitBox.gd"
+}, {
+"base": "OnGround",
 "class": "Idle",
 "language": "GDScript",
-"path": "res://actors/characters/player/states/motion/on_ground/idle.gd"
+"path": "res://actors/player/states/motion/on_ground/idle.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Minotaur",
+"language": "GDScript",
+"path": "res://actors/monsters/minotaur/Minotaur.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Monster",
+"language": "GDScript",
+"path": "res://actors/monsters/Monster.gd"
 }, {
 "base": "Node",
 "class": "Motion",
 "language": "GDScript",
-"path": "res://actors/characters/player/states/motion/motion.gd"
+"path": "res://actors/player/states/motion/motion.gd"
 }, {
-"base": "Node",
+"base": "OnGround",
 "class": "Move",
 "language": "GDScript",
-"path": "res://actors/characters/player/states/motion/on_ground/move.gd"
+"path": "res://actors/player/states/motion/on_ground/move.gd"
 }, {
 "base": "Node",
 "class": "OnGround",
 "language": "GDScript",
-"path": "res://actors/characters/player/states/motion/on_ground/on_ground.gd"
+"path": "res://actors/player/states/motion/on_ground/on_ground.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "PlayerController",
 "language": "GDScript",
-"path": "res://actors/characters/player/Player_controller.gd"
+"path": "res://actors/player/Player_controller.gd"
 }, {
-"base": "Node",
+"base": "StateMachine",
 "class": "PlayerStateMachine",
 "language": "GDScript",
-"path": "res://actors/characters/player/PlayerStateMachine.gd"
+"path": "res://actors/player/PlayerStateMachine.gd"
 }, {
-"base": "Node",
+"base": "OnGround",
 "class": "Slide",
 "language": "GDScript",
-"path": "res://actors/characters/player/states/motion/on_ground/slide.gd"
+"path": "res://actors/player/states/motion/on_ground/slide.gd"
 }, {
 "base": "Node",
 "class": "State",
 "language": "GDScript",
-"path": "res://actors/characters/player/states/states.gd"
+"path": "res://actors/player/states/states.gd"
 }, {
 "base": "Node",
 "class": "StateMachine",
 "language": "GDScript",
-"path": "res://actors/characters/player/StateMachine.gd"
+"path": "res://actors/player/StateMachine.gd"
+}, {
+"base": "Node",
+"class": "Stats",
+"language": "GDScript",
+"path": "res://actors/stats/Stats.gd"
+}, {
+"base": "Node",
+"class": "Steering",
+"language": "GDScript",
+"path": "res://utils/autoload/Steering.gd"
 }, {
 "base": "Area2D",
 "class": "Sword",
 "language": "GDScript",
 "path": "res://actors/weapons/sword/Sword.gd"
+}, {
+"base": "Area2D",
+"class": "Weapon",
+"language": "GDScript",
+"path": "res://actors/weapons/Weapon.gd"
 } ]
 _global_script_class_icons={
 "Attack": "",
 "CamaraPivot": "",
 "Character": "",
+"DamageSource": "",
+"HitBox": "",
 "Idle": "",
+"Minotaur": "",
+"Monster": "",
 "Motion": "",
 "Move": "",
 "OnGround": "",
@@ -87,7 +126,10 @@ _global_script_class_icons={
 "Slide": "",
 "State": "",
 "StateMachine": "",
-"Sword": ""
+"Stats": "",
+"Steering": "",
+"Sword": "",
+"Weapon": ""
 }
 
 [application]
@@ -104,10 +146,6 @@ window/size/test_width=1024
 window/size/test_height=600
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
-
-[editor_plugins]
-
-enabled=PoolStringArray( "godot-git-control.funabab" )
 
 [importer_defaults]
 
@@ -166,6 +204,14 @@ attack={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":2,"pressure":0.0,"pressed":false,"script":null)
  ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="enviroment"
+2d_physics/layer_2="hitbox_characters"
+2d_physics/layer_3="hitbox_monsters"
+2d_physics/layer_4="weapon"
+2d_physics/layer_5="damager_area"
 
 [rendering]
 

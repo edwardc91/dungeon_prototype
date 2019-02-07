@@ -1,0 +1,83 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://actors/monsters/Monster.tscn" type="PackedScene" id=1]
+[ext_resource path="res://actors/monsters/minotaur/Minotaur.gd" type="Script" id=2]
+[ext_resource path="res://actors/monsters/minotaur/Minotaur - Sprite Sheet.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "SETUP"
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "idle"
+length = 1.5
+loop = true
+step = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyPivot/Body:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 28, 23, 52, 41 ), Rect2( 124, 22, 52, 41 ), Rect2( 220, 22, 52, 41 ), Rect2( 316, 23, 52, 41 ), Rect2( 412, 23, 52, 41 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+
+resource_name = "walk"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyPivot/Body:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 26, 118, 52, 40 ), Rect2( 121, 116, 52, 40 ), Rect2( 218, 117, 52, 41 ), Rect2( 315, 119, 52, 41 ), Rect2( 412, 117, 52, 41 ), Rect2( 509, 116, 52, 41 ), Rect2( 604, 117, 52, 41 ), Rect2( 699, 119, 52, 41 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=4]
+
+extents = Vector2( 13.6948, 5.20359 )
+
+[node name="Minotaur" index="0" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+DEFAULT_SLOW_RADIUS = 100.0
+DEFAULT_MAX_SPEED = 50.0
+MAX_ROAM_SPEED = 50.0
+ROAM_RADIUS = 60.0
+
+[node name="AnimationPlayer" parent="." index="0"]
+anims/SETUP = SubResource( 1 )
+anims/idle = SubResource( 2 )
+anims/walk = SubResource( 3 )
+
+[node name="BodyPivot" parent="." index="2"]
+editor/display_folded = false
+
+[node name="Body" parent="BodyPivot" index="0"]
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 218, 117, 52, 41 )
+
+[node name="HitBox" parent="." index="3"]
+editor/display_folded = true
+position = Vector2( -8, 0 )
+
+[node name="Timer" type="Timer" parent="." index="5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="6"]
+position = Vector2( -8.992, 15.256 )
+shape = SubResource( 4 )
+
+
+[editable path="HitBox"]

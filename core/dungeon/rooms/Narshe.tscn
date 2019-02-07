@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://sound/music/1-22-2019-intro-juego-_2.ogg" type="AudioStream" id=1]
 [ext_resource path="res://core/dungeon/tilsets/narshe/narshe.tres" type="TileSet" id=2]
-[ext_resource path="res://actors/characters/player/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://utils/light/light.png" type="Texture" id=4]
-[ext_resource path="res://utils/light/LightAnim.gd" type="Script" id=5]
+[ext_resource path="res://actors/monsters/minotaur/Minotaur.tscn" type="PackedScene" id=3]
+[ext_resource path="res://actors/player/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://utils/light/light.png" type="Texture" id=5]
+[ext_resource path="res://utils/light/LightAnim.gd" type="Script" id=6]
 
 [sub_resource type="Animation" id=1]
 
@@ -54,9 +55,18 @@ cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 0, 536870934, 0, 42, 22, 0, 65536, 536870934, 0, 65578, 22, 0, 131072, 536870934, 0, 131114, 22, 0, 196608, 536870934, 0, 196650, 22, 0, 262144, 536870934, 0, 262147, 536870934, 0, 262148, 536870934, 0, 262186, 22, 0, 327680, 536870934, 0, 327722, 22, 0, 393216, 536870934, 0, 393258, 22, 0, 458752, 536870934, 0, 458794, 22, 0, 524288, 536870934, 0, 524330, 22, 0, 589824, 536870934, 0, 589866, 22, 0, 655360, 536870934, 0, 655402, 22, 0, 720896, 536870934, 0, 720938, 22, 0, 786432, 536870934, 0, 786474, 22, 0, 851968, 536870934, 0, 852010, 22, 0, 917504, 536870934, 0, 917546, 22, 0, 983040, 536870934, 0, 983082, 22, 0, 1048576, 536870934, 0, 1048618, 22, 0, 1114112, 536870934, 0, 1114154, 22, 0, 1179648, 536870934, 0, 1179649, 536870934, 0, 1179650, 536870934, 0, 1179651, 536870934, 0, 1179652, 536870934, 0, 1179653, 536870934, 0, 1179654, 536870934, 0, 1179656, 536870934, 0, 1179657, 536870934, 0, 1179658, 536870934, 0, 1179659, 536870934, 0, 1179660, 536870934, 0, 1179661, 22, 0, 1179690, 22, 0, 1245184, 536870934, 0, 1245189, 536870934, 0, 1245190, 536870934, 0, 1245192, 536870934, 0, 1245193, 536870934, 0, 1245197, 22, 0, 1245226, 22, 0, 1310720, 536870934, 0, 1310726, 536870934, 0, 1310728, 536870934, 0, 1310733, 536870934, 0, 1310762, 22, 0, 1376256, 536870934, 0, 1376262, 536870934, 0, 1376264, 536870934, 0, 1376269, 536870934, 0, 1376298, 22, 0, 1441792, 536870934, 0, 1441798, 536870934, 0, 1441800, 536870934, 0, 1441805, 536870934, 0, 1441834, 22, 0, 1507328, 536870934, 0, 1507341, 536870934, 0, 1507370, 22, 0, 1572864, 536870934, 0, 1572877, 536870934, 0, 1572906, 22, 0, 1638400, 536870934, 0, 1638413, 22, 0, 1638442, 22, 0, 1703936, 22, 0, 1703949, 22, 0, 1703978, 22, 0, 1769472, 22, 0, 1769485, 22, 0, 1769514, 22, 0, 1835008, 22, 0, 1835021, 22, 0, 1835050, 22, 0, 1900544, 22, 0, 1900557, 22, 0, 1900586, 22, 0, 1966080, 22, 0, 1966081, 22, 0, 1966082, 22, 0, 1966083, 22, 0, 1966084, 22, 0, 1966085, 22, 0, 1966086, 22, 0, 1966087, 22, 0, 1966088, 22, 0, 1966089, 22, 0, 1966090, 22, 0, 1966091, 22, 0, 1966092, 22, 0, 1966093, 22, 0, 1966094, 22, 0, 1966095, 22, 0, 1966096, 22, 0, 1966097, 22, 0, 1966098, 22, 0, 1966099, 22, 0, 1966100, 22, 0, 1966101, 22, 0, 1966102, 22, 0, 1966103, 22, 0, 1966104, 22, 0, 1966105, 22, 0, 1966106, 22, 0, 1966107, 22, 0, 1966108, 22, 0, 1966109, 22, 0, 1966110, 22, 0, 1966111, 22, 0, 1966112, 22, 0, 1966113, 22, 0, 1966114, 22, 0, 1966115, 22, 0, 1966116, 22, 0, 1966117, 22, 0, 1966118, 22, 0, 1966119, 22, 0, 1966120, 22, 0, 1966121, 22, 0, 1966122, 22, 0 )
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Minotaur" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 500, 200 )
+
+[node name="Player" parent="YSort" instance=ExtResource( 4 )]
+editor/display_folded = true
 position = Vector2( 70, 110 )
 active_camara_limits = true
+
+[node name="Minotaur2" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 550, 300 )
 
 [node name="UpperWallSep" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
@@ -73,8 +83,9 @@ tile_data = PoolIntArray( 15, -2147483616, 65537, 65551, -2147483616, 65537, 131
 [node name="Lights" type="Node" parent="."]
 
 [node name="Light2D" type="Light2D" parent="Lights"]
+editor/display_folded = true
 position = Vector2( 119.182, 25.7536 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 texture_scale = 0.3
 color = Color( 0.439216, 0.431373, 0.0509804, 1 )
 energy = 0.693813
@@ -82,11 +93,11 @@ shadow_enabled = true
 
 [node name="LightAnim" type="AnimationPlayer" parent="Lights/Light2D"]
 anims/fliter = SubResource( 1 )
-script = ExtResource( 5 )
+script = ExtResource( 6 )
 
 [node name="Light2D2" type="Light2D" parent="Lights"]
 position = Vector2( 336.223, 36.1117 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 texture_scale = 0.3
 color = Color( 0.439216, 0.431373, 0.0509804, 1 )
 shadow_enabled = true

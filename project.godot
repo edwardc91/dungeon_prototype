@@ -34,7 +34,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://actors/hit_box/HitBox.gd"
 }, {
-"base": "OnGround",
+"base": "Node",
 "class": "Idle",
 "language": "GDScript",
 "path": "res://actors/player/states/motion/on_ground/idle.gd"
@@ -54,7 +54,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://actors/player/states/motion/motion.gd"
 }, {
-"base": "OnGround",
+"base": "Node",
 "class": "Move",
 "language": "GDScript",
 "path": "res://actors/player/states/motion/on_ground/move.gd"
@@ -69,12 +69,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://actors/player/Player_controller.gd"
 }, {
-"base": "StateMachine",
+"base": "Node",
 "class": "PlayerStateMachine",
 "language": "GDScript",
 "path": "res://actors/player/PlayerStateMachine.gd"
 }, {
-"base": "OnGround",
+"base": "Node",
 "class": "Slide",
 "language": "GDScript",
 "path": "res://actors/player/states/motion/on_ground/slide.gd"
@@ -142,6 +142,7 @@ config/icon="res://icon.png"
 
 window/size/width=375
 window/size/height=220
+window/size/fullscreen=true
 window/size/test_width=1024
 window/size/test_height=600
 window/stretch/mode="2d"

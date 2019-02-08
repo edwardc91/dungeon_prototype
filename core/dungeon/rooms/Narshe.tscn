@@ -58,7 +58,7 @@ tile_data = PoolIntArray( 0, 536870934, 0, 42, 22, 0, 65536, 536870934, 0, 65578
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Minotaur" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 500, 200 )
+position = Vector2( 397.17, 115.082 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 4 )]
 editor/display_folded = true

@@ -1,12 +1,75 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://actors/monsters/Monster.tscn" type="PackedScene" id=1]
 [ext_resource path="res://actors/monsters/minotaur/Minotaur.gd" type="Script" id=2]
-[ext_resource path="res://actors/monsters/minotaur/Minotaur - Sprite Sheet.png" type="Texture" id=3]
+[ext_resource path="res://actors/ImanorBalloon.png" type="Texture" id=3]
+[ext_resource path="res://actors/monsters/minotaur/Minotaur - Sprite Sheet.png" type="Texture" id=4]
 
 [sub_resource type="Animation" id=1]
 
 resource_name = "SETUP"
+length = 0.05
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyPivot/Body:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BodyPivot/Body:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 28, 23, 52, 41 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BodyPivot/Emotion:region_rect")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 3, 36, 12, 12 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BodyPivot/Emotion:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("BodyPivot/Body:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 
@@ -27,9 +90,172 @@ tracks/0/keys = {
 "values": [ Rect2( 28, 23, 52, 41 ), Rect2( 124, 22, 52, 41 ), Rect2( 220, 22, 52, 41 ), Rect2( 316, 23, 52, 41 ), Rect2( 412, 23, 52, 41 ) ]
 }
 
+[sub_resource type="Animation" id=10]
+
+resource_name = "prepare_slash_attack"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyPivot/Body:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 5, 307, 56, 45 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BodyPivot/Body:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -20, 0 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+
+resource_name = "prepare_spin_attack"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyPivot/Body:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Rect2( 23, 496, 38, 48 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BodyPivot/Body:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -12, 0 ) ]
+}
+
 [sub_resource type="Animation" id=3]
 
-resource_name = "walk"
+resource_name = "slash_attack"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyPivot/Body:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 108, 293, 75, 65 ), Rect2( 206, 293, 71, 65 ), Rect2( 316, 295, 57, 63 ), Rect2( 412, 311, 55, 46 ), Rect2( 508, 311, 55, 46 ), Rect2( 604, 311, 49, 46 ), Rect2( 700, 311, 48, 41 ), Rect2( 796, 310, 52, 42 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+
+resource_name = "spin_attack"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyPivot/Body:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 126, 600, 54, 40 ), Rect2( 222, 600, 54, 40 ), Rect2( 298, 599, 68, 41 ), Rect2( 384, 600, 48, 40 ), Rect2( 498, 600, 73, 46 ), Rect2( 604, 311, 49, 46 ), Rect2( 703, 599, 46, 46 ), Rect2( 799, 599, 46, 46 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+
+resource_name = "spot"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyPivot/Body:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Rect2( 28, 23, 52, 41 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BodyPivot/Emotion:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 3, 36, 12, 12 ), Rect2( 18, 33, 14, 15 ), Rect2( 34, 33, 14, 15 ), Rect2( 50, 33, 14, 15 ), Rect2( 66, 33, 14, 15 ), Rect2( 82, 32, 14, 16 ), Rect2( 98, 33, 14, 15 ), Rect2( 114, 33, 14, 15 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BodyPivot/Emotion:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=8]
+
+resource_name = "stagger"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyPivot/Body:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.35, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 28, 791, 52, 41 ), Rect2( 124, 792, 52, 40 ), Rect2( 220, 791, 52, 41 ), Rect2( 28, 791, 52, 41 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BodyPivot/Body:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.94902, 0.52549, 0.117647, 1 ), Color( 1, 1, 1, 1 ), Color( 0.94902, 0.52549, 0.117647, 1 ), Color( 1, 1, 1, 1 ), Color( 0.94902, 0.52549, 0.117647, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -45,29 +271,45 @@ tracks/0/keys = {
 "values": [ Rect2( 26, 118, 52, 40 ), Rect2( 121, 116, 52, 40 ), Rect2( 218, 117, 52, 41 ), Rect2( 315, 119, 52, 41 ), Rect2( 412, 117, 52, 41 ), Rect2( 509, 116, 52, 41 ), Rect2( 604, 117, 52, 41 ), Rect2( 699, 119, 52, 41 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="OccluderPolygon2D" id=6]
+
+polygon = PoolVector2Array( -14.1092, -13.6347, -2.15752, -12.4781, 4.94014, -8.27264, 4.20403, 16.3868, -19.9034, 16.7549, -22.4797, -7.53653 )
+
+[sub_resource type="RectangleShape2D" id=7]
 
 extents = Vector2( 13.6948, 5.20359 )
 
-[node name="Minotaur" index="0" instance=ExtResource( 1 )]
+[node name="Minotaur" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-DEFAULT_SLOW_RADIUS = 100.0
-DEFAULT_MAX_SPEED = 50.0
-MAX_ROAM_SPEED = 50.0
-ROAM_RADIUS = 60.0
 
 [node name="AnimationPlayer" parent="." index="0"]
 anims/SETUP = SubResource( 1 )
 anims/idle = SubResource( 2 )
-anims/walk = SubResource( 3 )
+anims/prepare_slash_attack = SubResource( 10 )
+anims/prepare_spin_attack = SubResource( 11 )
+anims/slash_attack = SubResource( 3 )
+anims/spin_attack = SubResource( 4 )
+anims/spot = SubResource( 9 )
+anims/stagger = SubResource( 8 )
+anims/walk = SubResource( 5 )
 
 [node name="BodyPivot" parent="." index="2"]
 editor/display_folded = false
 
-[node name="Body" parent="BodyPivot" index="0"]
+[node name="Emotion" type="Sprite" parent="BodyPivot" index="0"]
+visible = false
+position = Vector2( 6.94434, -23.6842 )
 texture = ExtResource( 3 )
 region_enabled = true
-region_rect = Rect2( 218, 117, 52, 41 )
+region_rect = Rect2( 3, 36, 12, 12 )
+
+[node name="Body" parent="BodyPivot" index="1"]
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 699, 119, 52, 41 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="BodyPivot" index="2"]
+occluder = SubResource( 6 )
 
 [node name="HitBox" parent="." index="3"]
 editor/display_folded = true
@@ -77,7 +319,7 @@ position = Vector2( -8, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="6"]
 position = Vector2( -8.992, 15.256 )
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
 
 [editable path="HitBox"]

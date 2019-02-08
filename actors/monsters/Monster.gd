@@ -8,8 +8,8 @@ var state
 var active : bool
 
 export(float) var ARRIVE_DISTANCE = 6.0
-export(float) var DEFAULT_SLOW_RADIUS = 200.0
-export(float) var DEFAULT_MAX_SPEED = 300.0
+export(float) var DEFAULT_SLOW_RADIUS = 100.0
+export(float) var DEFAULT_MAX_SPEED = 100.0
 export(float) var MASS = 8.0
 
 onready var stats : Stats = ($Stats as Stats)
@@ -35,6 +35,7 @@ func initialize() ->void:
 	#	return
 	# target = target_actor
 	# target.connect('died', self, '_on_target_died')
+	target = (get_parent().get_node("Player") as Character)
 	set_active(true)
 
 func _on_target_died() ->void:

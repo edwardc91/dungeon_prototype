@@ -20,7 +20,7 @@ export(float) var FOLLOW_RANGE = 200.0
 export(float) var MAX_FOLLOW_SPEED = 60.0
 
 export(float) var ATTACK_RANGE = 15.0
-export(float) var PREPARE_TO_ATTACK_WAIT_TIME = 0.9
+export(float) var PREPARE_TO_ATTACK_WAIT_TIME = 0.5
 
 var timer : Timer
 onready var animation_player : AnimationPlayer = ($AnimationPlayer as AnimationPlayer)
@@ -35,6 +35,7 @@ func initialize() ->void:
 	timer = ($Timer as Timer)
 	animation_player = ($AnimationPlayer as AnimationPlayer)
 	steering = Steering.new()
+	($BodyPivot/HitBox/CollisionShape2D as CollisionShape2D).shape = preload("res://actors/monsters/minotaur/HitBox.tres")
 	.initialize()
 	# tween.connect('tween_completed', self, '_on_tween_completed')
 	animation_player.connect('animation_finished', self, '_on_animation_finished')

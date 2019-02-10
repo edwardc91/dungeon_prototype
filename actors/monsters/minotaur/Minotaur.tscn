@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://actors/monsters/Monster.tscn" type="PackedScene" id=1]
 [ext_resource path="res://actors/monsters/minotaur/Minotaur.gd" type="Script" id=2]
 [ext_resource path="res://actors/ImanorBalloon.png" type="Texture" id=3]
 [ext_resource path="res://actors/monsters/minotaur/Minotaur - Sprite Sheet.png" type="Texture" id=4]
+[ext_resource path="res://actors/hit_box/HitBox.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Animation" id=1]
 
@@ -90,7 +91,7 @@ tracks/0/keys = {
 "values": [ Rect2( 28, 23, 52, 41 ), Rect2( 124, 22, 52, 41 ), Rect2( 220, 22, 52, 41 ), Rect2( 316, 23, 52, 41 ), Rect2( 412, 23, 52, 41 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=3]
 
 resource_name = "prepare_slash_attack"
 length = 0.1
@@ -104,22 +105,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Rect2( 5, 307, 56, 45 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("BodyPivot/Body:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -20, 0 ) ]
+"values": [ Rect2( 5, 294, 97, 72 ) ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=4]
 
 resource_name = "prepare_spin_attack"
 length = 0.1
@@ -134,24 +123,11 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ Rect2( 23, 496, 38, 48 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("BodyPivot/Body:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -12, 0 ) ]
+"values": [ Rect2( 23, 496, 66, 53 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=5]
 
-resource_name = "slash_attack"
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("BodyPivot/Body:region_rect")
@@ -163,12 +139,11 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Rect2( 108, 293, 75, 65 ), Rect2( 206, 293, 71, 65 ), Rect2( 316, 295, 57, 63 ), Rect2( 412, 311, 55, 46 ), Rect2( 508, 311, 55, 46 ), Rect2( 604, 311, 49, 46 ), Rect2( 700, 311, 48, 41 ), Rect2( 796, 310, 52, 42 ) ]
+"values": [ Rect2( 108, 293, 87, 75 ), Rect2( 206, 293, 83, 75 ), Rect2( 302, 293, 83, 75 ), Rect2( 398, 293, 83, 75 ), Rect2( 494, 293, 83, 75 ), Rect2( 590, 293, 83, 75 ), Rect2( 686, 293, 83, 75 ), Rect2( 782, 293, 83, 75 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=6]
 
-resource_name = "spin_attack"
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("BodyPivot/Body:region_rect")
@@ -183,7 +158,7 @@ tracks/0/keys = {
 "values": [ Rect2( 126, 600, 54, 40 ), Rect2( 222, 600, 54, 40 ), Rect2( 298, 599, 68, 41 ), Rect2( 384, 600, 48, 40 ), Rect2( 498, 600, 73, 46 ), Rect2( 604, 311, 49, 46 ), Rect2( 703, 599, 46, 46 ), Rect2( 799, 599, 46, 46 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=7]
 
 resource_name = "spot"
 step = 0.05
@@ -250,11 +225,11 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"update": 0,
+"update": 1,
 "values": [ Color( 0.94902, 0.52549, 0.117647, 1 ), Color( 1, 1, 1, 1 ), Color( 0.94902, 0.52549, 0.117647, 1 ), Color( 1, 1, 1, 1 ), Color( 0.94902, 0.52549, 0.117647, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=9]
 
 length = 0.8
 loop = true
@@ -271,34 +246,34 @@ tracks/0/keys = {
 "values": [ Rect2( 26, 118, 52, 40 ), Rect2( 121, 116, 52, 40 ), Rect2( 218, 117, 52, 41 ), Rect2( 315, 119, 52, 41 ), Rect2( 412, 117, 52, 41 ), Rect2( 509, 116, 52, 41 ), Rect2( 604, 117, 52, 41 ), Rect2( 699, 119, 52, 41 ) ]
 }
 
-[sub_resource type="OccluderPolygon2D" id=6]
+[sub_resource type="OccluderPolygon2D" id=10]
 
 polygon = PoolVector2Array( -14.1092, -13.6347, -2.15752, -12.4781, 4.94014, -8.27264, 4.20403, 16.3868, -19.9034, 16.7549, -22.4797, -7.53653 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=11]
 
 extents = Vector2( 13.6948, 5.20359 )
 
-[node name="Minotaur" instance=ExtResource( 1 )]
+[node name="Minotaur" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="AnimationPlayer" parent="." index="0"]
 anims/SETUP = SubResource( 1 )
 anims/idle = SubResource( 2 )
-anims/prepare_slash_attack = SubResource( 10 )
-anims/prepare_spin_attack = SubResource( 11 )
-anims/slash_attack = SubResource( 3 )
-anims/spin_attack = SubResource( 4 )
-anims/spot = SubResource( 9 )
+anims/prepare_slash_attack = SubResource( 3 )
+anims/prepare_spin_attack = SubResource( 4 )
+anims/slash_attack = SubResource( 5 )
+anims/spin_attack = SubResource( 6 )
+anims/spot = SubResource( 7 )
 anims/stagger = SubResource( 8 )
-anims/walk = SubResource( 5 )
+anims/walk = SubResource( 9 )
 
 [node name="BodyPivot" parent="." index="2"]
 editor/display_folded = false
 
 [node name="Emotion" type="Sprite" parent="BodyPivot" index="0"]
 visible = false
-position = Vector2( 6.94434, -23.6842 )
+position = Vector2( 15.0092, -21.2874 )
 texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 3, 36, 12, 12 )
@@ -306,20 +281,22 @@ region_rect = Rect2( 3, 36, 12, 12 )
 [node name="Body" parent="BodyPivot" index="1"]
 texture = ExtResource( 4 )
 region_enabled = true
-region_rect = Rect2( 699, 119, 52, 41 )
+region_rect = Rect2( 28, 23, 52, 41 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="BodyPivot" index="2"]
-occluder = SubResource( 6 )
+position = Vector2( -0.0560799, -1.73576 )
+occluder = SubResource( 10 )
 
-[node name="HitBox" parent="." index="3"]
-editor/display_folded = true
-position = Vector2( -8, 0 )
+[node name="HitBox" parent="BodyPivot" index="3" instance=ExtResource( 5 )]
 
-[node name="Timer" type="Timer" parent="." index="5"]
+[node name="CollisionShape2D" parent="BodyPivot/HitBox" index="0"]
+position = Vector2( -10.3949, 0.996773 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="6"]
-position = Vector2( -8.992, 15.256 )
-shape = SubResource( 7 )
+[node name="Timer" type="Timer" parent="." index="4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="5"]
+position = Vector2( -8.91777, 16.2174 )
+shape = SubResource( 11 )
 
 
-[editable path="HitBox"]
+[editable path="BodyPivot/HitBox"]

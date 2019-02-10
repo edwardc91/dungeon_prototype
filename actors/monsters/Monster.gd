@@ -15,7 +15,7 @@ export(float) var MASS = 8.0
 onready var stats : Stats = ($Stats as Stats)
 onready var body_pivot : Position2D = ($BodyPivot as Position2D)
 onready var collision_shape : CollisionShape2D = ($CollisionShape2D as CollisionShape2D)
-onready var hit_box : Area2D = ($HitBox as Area2D)
+onready var hit_box : HitBox = ($BodyPivot/HitBox as HitBox)
 
 var target : Character = null # Actor
 
@@ -47,7 +47,7 @@ func take_damage_from(damage_source: DamageSource) ->void:
 func set_active(value: bool) ->void:
 	active = value
 	set_physics_process(value)
-	($HitBox as HitBox).set_active(value)
+	hit_box.set_active(value)
 	# ($DamageSource as DamageSource).set_active(value)
 	
 func set_look_direction(value : Vector2) -> void:
@@ -66,7 +66,7 @@ func update_look_direction(direction: Vector2) -> void:
 	body_pivot.set_scale(Vector2(direction.x, 1))
 	if change_collision:
 		collision_shape.position.x = collision_shape.position.x * -1
-		hit_box.position.x = hit_box.position.x * -1
+		# hit_box.position.x = hit_box.position.x * -1
 	
 func calculate_look_direction(current_position: Vector2, target_position: Vector2) ->Vector2:
 	var look_direction : Vector2 = Vector2()

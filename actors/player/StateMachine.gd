@@ -49,7 +49,10 @@ func _change_state(state_name: String) -> void:
 	else:
 		states_stack[0] = states_map[state_name]
 	
-	current_state = states_stack[0]
+	if states_stack[0] in [$Attack] and state_name == "previous":
+		current_state = $Idle
+	else:
+		current_state = states_stack[0]
 	emit_signal("state_changed", current_state)
 	current_state.enter()
 

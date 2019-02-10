@@ -30,6 +30,8 @@ var roam_target_position : Vector2 = Vector2()
 var roam_slow_radius : float = 0.0
 var steering : Steering 
 var current_attack : int = 0
+var damage_source_slash = preload("./DamageSourceSlash.tscn")
+var dm_instance = null
 
 func initialize() ->void:
 	timer = ($Timer as Timer)
@@ -137,7 +139,7 @@ func _physics_process(delta: float) ->void:
 			if position.distance_to(target.position) > FOLLOW_RANGE:
 				_change_state(STATES.RETURN)
 			
-func _on_Timer_timeout():
+func _on_Timer_timeout() ->void:
 	match state:
 		STATES.IDLE:
 			_change_state(STATES.ROAM)
@@ -145,7 +147,7 @@ func _on_Timer_timeout():
 			animation_player.play("SETUP")
 			_change_state(STATES.ATTACK)
 			
-func _on_animation_finished(anim_name):
+func _on_animation_finished(anim_name) ->void:
 	match anim_name:
 		'spot':
 			_change_state(STATES.FOLLOW)
@@ -155,6 +157,13 @@ func _on_animation_finished(anim_name):
 			_change_state(STATES.FOLLOW)
 		'spin_attack':
 			_change_state(STATES.FOLLOW)
+			
+func instanciate_slash_damage_source() ->void:
+	dm_instance = damage_source_slash.instance()
+	body_pivot.add_child(dm_instance)
+	
+func destroy_slash_damage_source() ->void:
+	dm_instance.queue_free()
 
 
 

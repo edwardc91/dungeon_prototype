@@ -3,12 +3,24 @@ extends Character
 class_name PlayerController
 
 onready var weapon : Area2D = ($WeaponPivot/WeaponOffset/Sword as Area2D)
+onready var body : Sprite = ($BodyPivot/Body as Sprite)
+onready var state_machine : StateMachine = ($StateMachine as StateMachine)
 
 export(bool) var active_camara_limits = false
 
 func _ready() -> void:
 	if active_camara_limits:
 		update_camara_limits()
+		
+		
+func get_body() -> Sprite:
+	return body
+	
+func take_damage_from(damage_source: DamageSource) ->void:
+	if state_machine.current_state == $StateMachine/Stagger:
+		return
+	 ($StateMachine/Stagger as Stagger).knockback_direction = (damage_source.global_position - global_position).normalized()
+	.take_damage_from(damage_source)
 
 func update_camara_limits() -> void:
 	var root_node : Node = (get_parent().get_parent() as Node)

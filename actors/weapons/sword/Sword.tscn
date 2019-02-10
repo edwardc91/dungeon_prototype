@@ -8,9 +8,9 @@
 [ext_resource path="res://actors/weapons/Armas adiccionales.png" type="Texture" id=6]
 [ext_resource path="res://sound/sfx/064-Swing03.wav" type="AudioStream" id=7]
 
-[node name="Sword" instance=ExtResource( 1 )]
-editor/display_folded = false
+[node name="Sword" index="0" instance=ExtResource( 1 )]
 scale = Vector2( 0.6, 0.6 )
+monitorable = false
 script = ExtResource( 2 )
 
 [node name="AnimationPlayer" parent="." index="0"]
@@ -20,7 +20,6 @@ anims/medium_attack = ExtResource( 5 )
 
 [node name="Sprite" parent="." index="1"]
 texture = ExtResource( 6 )
-offset = Vector2( 7, 0 )
 flip_v = true
 region_enabled = true
 region_rect = Rect2( 17, 6, 20, 22 )

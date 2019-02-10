@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://actors/DamageSource.gd" type="Script" id=1]
+
+[node name="DamageSourceSlash" type="Area2D"]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 0.863979, 19.8084, 6.38475, 25.1451, 13.5618, 24.7771, 18.8985, 21.8327, 25.7075, 7.47866, 30.4921, -11.292, 29.388, -19.7572, 26.9956, -24.5418, 12.0896, -24.3578, 14.8499, -14.4204, 13.0097, -6.69133 )
+

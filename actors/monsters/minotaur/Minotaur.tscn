@@ -141,6 +141,23 @@ tracks/0/keys = {
 "update": 1,
 "values": [ Rect2( 108, 293, 87, 75 ), Rect2( 206, 293, 83, 75 ), Rect2( 302, 293, 83, 75 ), Rect2( 398, 293, 83, 75 ), Rect2( 494, 293, 83, 75 ), Rect2( 590, 293, 83, 75 ), Rect2( 686, 293, 83, 75 ), Rect2( 782, 293, 83, 75 ) ]
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "instanciate_slash_damage_source"
+}, {
+"args": [  ],
+"method": "destroy_slash_damage_source"
+} ]
+}
 
 [sub_resource type="Animation" id=6]
 
@@ -250,11 +267,11 @@ tracks/0/keys = {
 
 polygon = PoolVector2Array( -14.1092, -13.6347, -2.15752, -12.4781, 4.94014, -8.27264, 4.20403, 16.3868, -19.9034, 16.7549, -22.4797, -7.53653 )
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=12]
 
 extents = Vector2( 13.6948, 5.20359 )
 
-[node name="Minotaur" index="0" instance=ExtResource( 1 )]
+[node name="Minotaur" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="AnimationPlayer" parent="." index="0"]
@@ -281,13 +298,16 @@ region_rect = Rect2( 3, 36, 12, 12 )
 [node name="Body" parent="BodyPivot" index="1"]
 texture = ExtResource( 4 )
 region_enabled = true
-region_rect = Rect2( 28, 23, 52, 41 )
+region_rect = Rect2( 398, 293, 83, 75 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="BodyPivot" index="2"]
 position = Vector2( -0.0560799, -1.73576 )
 occluder = SubResource( 10 )
 
 [node name="HitBox" parent="BodyPivot" index="3" instance=ExtResource( 5 )]
+editor/display_folded = true
+collision_layer = 4
+collision_mask = 8
 
 [node name="CollisionShape2D" parent="BodyPivot/HitBox" index="0"]
 position = Vector2( -10.3949, 0.996773 )
@@ -296,7 +316,7 @@ position = Vector2( -10.3949, 0.996773 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="5"]
 position = Vector2( -8.91777, 16.2174 )
-shape = SubResource( 11 )
+shape = SubResource( 12 )
 
 
 [editable path="BodyPivot/HitBox"]

@@ -66,12 +66,17 @@ func set_ready_for_next_attack() ->void:
 	ready_for_next_attack = true
 
 func _on_animation_finished(name: String) ->void:
-	if attack_input_state == ATTACK_INPUT_STATES.REGISTERED and attack_id < combo.size():
-		set_ready_for_next_attack()
-	else:
-		_change_state(STATES.IDLE)
-		emit_signal("combo_finished")
+	if not name == "SETUP":
+		if attack_input_state == ATTACK_INPUT_STATES.REGISTERED and attack_id < combo.size():
+			set_ready_for_next_attack()
+		else:
+			_change_state(STATES.IDLE)
+			emit_signal("combo_finished")
 		
 func on_animation_started(name: String) ->void:
 	emit_signal("single_attack_started", current_dash_length)
+	
+func set_to_idle_state():
+	animation_player.play("SETUP")
+	_change_state(STATES.IDLE)
 

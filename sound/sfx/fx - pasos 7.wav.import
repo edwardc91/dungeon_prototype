@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/fx - pasos 7.wav-f2171c0bda27f8dc92c2ceb7770eb7d2.sample"
+
+[deps]
+
+source_file="res://sound/sfx/fx - pasos 7.wav"
+dest_files=[ "res://.import/fx - pasos 7.wav-f2171c0bda27f8dc92c2ceb7770eb7d2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=true
+compress/mode=0

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://actors/DamageSource.gd" type="Script" id=1]
+
+[sub_resource type="CapsuleShape2D" id=1]
+
+radius = 6.14996
+height = 62.9746
+
+[node name="DamageSourceSpin" type="Area2D"]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -4.97062, 15.3637 )
+rotation = 1.5708
+shape = SubResource( 1 )
+

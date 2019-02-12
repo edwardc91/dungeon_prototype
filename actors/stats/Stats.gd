@@ -22,6 +22,7 @@ func take_damage(amount: int) ->void:
 	health = max(0, health)
 	emit_signal("health_changed", health)
 	emit_signal("damage_taken", health)
+	print("Player Health ", health as String)
 	if health == 0:
 		emit_signal("health_depleted")
 

@@ -16,6 +16,9 @@ func _ready() -> void:
 func get_body() -> Sprite:
 	return body
 	
+func get_stats_node():
+	return stats
+	
 func take_damage_from(damage_source: DamageSource) ->void:
 	if state_machine.current_state == $StateMachine/Stagger:
 		return

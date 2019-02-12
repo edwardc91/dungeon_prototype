@@ -7,6 +7,7 @@ func _on_area_entered(area : Area2D) ->void:
 	if not damage_source:
 		return
 	owner.take_damage_from(damage_source)
+	print(owner.name)
 
 func set_active(value: bool) -> void:
 	($CollisionShape2D as CollisionShape2D).disabled = not value

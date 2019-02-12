@@ -14,11 +14,11 @@ func _ready()->void:
 
 func enter() ->void:
 	player_animation_node.play("attack_" + owner.spritedir)
-	owner.weapon.attack()
+	weapon.attack()
 	
 func exit() ->void:
-	weapon.set_to_idle_state()
 	owner.get_body().modulate = Color("#ffffff")
+	weapon.set_to_idle_state()
 	
 func update(delta: float) -> void:
 	if current_dash_lenght != 0:

@@ -104,12 +104,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://utils/autoload/Steering.gd"
 }, {
-"base": "Area2D",
+"base": "Node2D",
 "class": "Sword",
 "language": "GDScript",
 "path": "res://actors/weapons/sword/Sword.gd"
 }, {
-"base": "Area2D",
+"base": "Node2D",
 "class": "Weapon",
 "language": "GDScript",
 "path": "res://actors/weapons/Weapon.gd"

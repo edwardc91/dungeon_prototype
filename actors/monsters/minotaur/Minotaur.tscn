@@ -152,10 +152,10 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
-"method": "instanciate_slash_damage_source"
+"method": "instanciate_damage_source"
 }, {
 "args": [  ],
-"method": "destroy_slash_damage_source"
+"method": "destroy_damage_source"
 } ]
 }
 
@@ -173,6 +173,23 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Rect2( 126, 600, 54, 40 ), Rect2( 222, 600, 54, 40 ), Rect2( 298, 599, 86, 41 ), Rect2( 384, 600, 84, 40 ), Rect2( 498, 591, 73, 55 ), Rect2( 599, 587, 65, 63 ), Rect2( 703, 592, 50, 53 ), Rect2( 799, 592, 50, 53 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "instanciate_damage_source"
+}, {
+"args": [  ],
+"method": "destroy_damage_source"
+} ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -219,7 +236,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id=8]
 
 resource_name = "stagger"
-length = 0.5
+length = 0.4
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("BodyPivot/Body:region_rect")
@@ -228,7 +245,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.35, 0.5 ),
+"times": PoolRealArray( 0, 0.1, 0.25, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Rect2( 28, 791, 52, 41 ), Rect2( 124, 792, 52, 40 ), Rect2( 220, 791, 52, 41 ), Rect2( 28, 791, 52, 41 ) ]
@@ -240,7 +257,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.5 ),
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Color( 0.94902, 0.52549, 0.117647, 1 ), Color( 1, 1, 1, 1 ), Color( 0.94902, 0.52549, 0.117647, 1 ), Color( 1, 1, 1, 1 ), Color( 0.94902, 0.52549, 0.117647, 1 ), Color( 1, 1, 1, 1 ) ]
@@ -271,7 +288,7 @@ polygon = PoolVector2Array( -14.1092, -13.6347, -2.15752, -12.4781, 4.94014, -8.
 
 extents = Vector2( 13.6948, 5.20359 )
 
-[node name="Minotaur" index="0" instance=ExtResource( 1 )]
+[node name="Minotaur" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="AnimationPlayer" parent="." index="0"]
@@ -318,5 +335,6 @@ position = Vector2( -10.3949, 0.996773 )
 position = Vector2( -6.01935, 16.217 )
 shape = SubResource( 11 )
 
+[connection signal="damage_taken" from="Stats" to="." method="_on_Stats_damage_taken"]
 
 [editable path="BodyPivot/HitBox"]

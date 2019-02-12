@@ -31,7 +31,9 @@ var roam_slow_radius : float = 0.0
 var steering : Steering 
 var current_attack : int = 0
 var damage_source_slash = preload("./DamageSourceSlash.tscn")
+var damage_source_spin = preload("./DamageSourceSpin.tscn")
 var dm_instance = null
+var previous_state : int
 
 func initialize() ->void:
 	timer = ($Timer as Timer)
@@ -67,6 +69,9 @@ func _change_state(new_state: int) ->void:
 			update_look_direction(new_look_direction)
 			animation_player.play("walk")
 		STATES.STAGGER:
+			$BodyPivot/Emotion.visible = false
+			if dm_instance:
+				destroy_damage_source()
 			animation_player.play("stagger")
 		STATES.SPOT:
 			var new_look_direction : Vector2 = calculate_look_direction(position, target.position)
@@ -152,18 +157,30 @@ func _on_animation_finished(anim_name) ->void:
 		'spot':
 			_change_state(STATES.FOLLOW)
 		'stagger':
-			_change_state(STATES.IDLE)
+			if position.distance_to(target.position) < SPOT_RANGE:
+				_change_state(STATES.FOLLOW)
+			else:
+				_change_state(STATES.IDLE)
 		'slash_attack': 
 			_change_state(STATES.FOLLOW)
 		'spin_attack':
 			_change_state(STATES.FOLLOW)
 			
-func instanciate_slash_damage_source() ->void:
-	dm_instance = damage_source_slash.instance()
+func instanciate_damage_source() ->void:
+	if current_attack == 0:
+		dm_instance = damage_source_slash.instance()
+	else:
+		dm_instance = damage_source_spin.instance()
 	body_pivot.add_child(dm_instance)
 	
-func destroy_slash_damage_source() ->void:
+func destroy_damage_source() ->void:
+	dm_instance.monitoring = false
 	dm_instance.queue_free()
+	dm_instance = null
+	
+func _on_Stats_damage_taken(new_health: int) ->void:
+	_change_state(STATES.STAGGER)
+	print("salud min " + stats.health as String)
 
 
 

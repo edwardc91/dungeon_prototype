@@ -1,4 +1,4 @@
-extends DamageSource
+extends Node2D
 
 class_name Weapon
 
@@ -14,9 +14,12 @@ var ready_for_next_attack : bool = false
 
 var attack_id : int = 0
 var current_dash_length : float = 0.0
+var current_damage : float = 0.0
 var combo : Array = []
 	
 var animation_player : AnimationPlayer
+var weapon_damage_source
+var dm_instance
 	
 func _ready():
 	animation_player = ($AnimationPlayer as AnimationPlayer)
@@ -37,7 +40,7 @@ func _change_state(new_state: int) ->void:
 			ready_for_next_attack = false
 			var attack : Dictionary = combo[min(attack_id, combo.size() - 1)]
 			current_dash_length = attack['dash_lenght']
-			damage = attack['damage']
+			current_damage = attack['damage']
 			animation_player.play(attack['animation'])
 			attack_id += 1
 	state = new_state
@@ -77,6 +80,7 @@ func on_animation_started(name: String) ->void:
 	emit_signal("single_attack_started", current_dash_length)
 	
 func set_to_idle_state():
-	animation_player.play("SETUP")
+	#animation_player.play("SETUP")
+	owner.get_body().modulate = Color("#ffffff")
+	visible = false
 	_change_state(STATES.IDLE)
-
